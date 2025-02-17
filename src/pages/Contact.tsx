@@ -21,7 +21,14 @@ export function Contact() {
     setStatus("Enviando...");
 
     try {
-      let response = await fetch("http://localhost:5000/send-email", {
+        //Configuración Local
+      /*let response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });*/
+
+      let response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
