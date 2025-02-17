@@ -38,6 +38,6 @@ app.post("/send-email", async (req, res) => {
 
 app.get("/health", (req, res) => res.send("OK"));
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`Servidor corriendo en http://localhost:${process.env.PORT}`);
 });
