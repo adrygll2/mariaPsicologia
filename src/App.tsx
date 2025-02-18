@@ -3,7 +3,7 @@ import { Menu, Heart, Phone } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import { BlogPage } from './pages/BlogPage';
 import { Services } from './pages/Services';
-import { Contact } from './pages/Contact';
+//import { Contact } from './pages/Contact';
 import { About } from './pages/About';
 import { MessageCircle } from 'lucide-react';
 
@@ -129,9 +129,6 @@ function Home() {
         <About />
         <div className="border-b-4 border-teal-600 opacity-50"></div>
       </div>
-      <div className="pb-8">
-        <Contact />
-      </div>
     </>
   );
 }
@@ -162,7 +159,6 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <WhatsAppButton />
