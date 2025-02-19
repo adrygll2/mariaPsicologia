@@ -1,8 +1,7 @@
 [build]
-  command = "npm install"
   functions = "netlify/functions"
 
-[dev]
-  framework = "#custom"
-  command = "netlify dev"
-  targetPort = 8888
+[[redirects]]
+  from = "/send-email"
+  to = "/.netlify/functions/send-email"
+  status = 200
