@@ -2,6 +2,6 @@
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/send-email"
-  to = "/.netlify/functions/send-email"
+  from = "/mailServer"
+  to = "/.netlify/functions/mailServer"
   status = 200
