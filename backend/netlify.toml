@@ -1,0 +1,8 @@
+[build]
+  command = "npm install"
+  functions = "netlify/functions"
+
+[dev]
+  framework = "#custom"
+  command = "netlify dev"
+  targetPort = 8888

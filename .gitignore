@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 *.env
 *mailServerLocal.js
+
+# Local Netlify folder
+.netlify
