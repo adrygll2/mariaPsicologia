@@ -1,12 +1,14 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: process.env.FRONTEND_URL })); // Permitir solicitudes del frontend
+app.use(cors()); // Permite solicitudes desde cualquier origen
 
+// Configurar Nodemailer
 const transporter = nodemailer.createTransport({
   service: process.env.EMAIL_SERVICE,
   host: process.env.EMAIL_HOST,
@@ -14,10 +16,11 @@ const transporter = nodemailer.createTransport({
   secure: process.env.EMAIL_SECURE === "true",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
+// Ruta para enviar emails
 app.post("/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -26,7 +29,7 @@ app.post("/send-email", async (req, res) => {
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_USER,
       subject: `Nuevo mensaje de ${name}`,
-      text: message
+      text: message,
     });
 
     res.json({ success: true, message: "Correo enviado correctamente" });
@@ -36,8 +39,5 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-app.get("/health", (req, res) => res.send("OK"));
-
-app.listen(process.env.PORT, "0.0.0.0", () => {
-  console.log(`Servidor corriendo en http://localhost:${process.env.PORT}`);
-});
+// Exportar la app para Netlify Functions
+module.exports.handler = serverless(app);
