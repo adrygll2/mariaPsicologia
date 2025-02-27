@@ -1,3 +1,9 @@
 [build]
-  command = "npm install"
-  functions = "backend/netlify/functions"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/mailServer"
+  to = "/.netlify/functions/mailServer"
+  status = 200
