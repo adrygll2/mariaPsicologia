@@ -3,6 +3,9 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[functions]
+directory = "netlify/functions"  
+
 [[redirects]]
   from = "/sendEmail"
   to = "/.netlify/functions/sendEmail"
